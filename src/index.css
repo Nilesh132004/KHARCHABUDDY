@@ -8,33 +8,59 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Modern Indian fintech color palette */
+    --background: 248 250 252;
+    --foreground: 226 29% 17%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 226 29% 17%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 226 29% 17%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Vibrant purple primary - modern fintech */
+    --primary: 256 92% 67%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 256 100% 85%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Warm saffron secondary - Indian context */
+    --secondary: 25 95% 53%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Fresh green for success/savings */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 71% 95%;
+
+    /* Bright blue accent */
+    --accent: 199 89% 48%;
+    --accent-foreground: 0 0% 100%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 256 92% 67%;
+
+    /* Beautiful gradients for cards and backgrounds */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(25 95% 65%));
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(142 71% 65%));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(199 89% 68%));
+    --gradient-background: linear-gradient(180deg, hsl(var(--background)), hsl(248 100% 98%));
+
+    /* Elegant shadows */
+    --shadow-soft: 0 4px 20px -2px hsl(var(--primary) / 0.1);
+    --shadow-card: 0 2px 8px -1px hsl(256 92% 67% / 0.15);
+    --shadow-glow: 0 0 20px hsl(var(--primary-glow) / 0.4);
+
+    /* Smooth transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --radius: 0.5rem;
 
@@ -101,5 +127,79 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-background);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+@layer components {
+  /* Card variants for different sections */
+  .card-glow {
+    @apply relative overflow-hidden;
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+  }
+  
+  .card-glow::before {
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    content: '';
+    background: var(--gradient-primary);
+    border-radius: inherit;
+  }
+  
+  .card-glow:hover::before {
+    @apply opacity-5;
+  }
+
+  /* Gradient text utilities */
+  .text-gradient-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-success {
+    background: var(--gradient-success);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Button hover effects */
+  .btn-bounce {
+    transition: var(--transition-bounce);
+  }
+  
+  .btn-bounce:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Progress bar styles */
+  .progress-glow {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .progress-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* Mobile-first responsive containers */
+  .mobile-container {
+    @apply px-4 py-2 max-w-md mx-auto;
   }
 }
