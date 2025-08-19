@@ -2,19 +2,20 @@ import { SpendingInsightCard } from "@/components/SpendingInsightCard";
 import { DailyTipCard } from "@/components/DailyTipCard";
 import { QuickActions } from "@/components/QuickActions";
 import { SavingsGoalCard } from "@/components/SavingsGoalCard";
+import { SpendingChart } from "@/components/SpendingChart";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import { Bell, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pb-20">
+    <div className="min-h-screen bg-background pb-20">
       {/* Header */}
       <div className="mobile-container pt-6 pb-4">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-gradient-primary">KharchaBuddy</h1>
-            <p className="text-sm text-muted-foreground">Hey Rahul! Ready to be smart with money? 💸</p>
+            <h1 className="text-2xl font-bold text-foreground">KharchaBuddy</h1>
+            <p className="text-sm text-foreground/70">Hey Rahul! Ready to be smart with money? 💸</p>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="sm" className="relative">
@@ -30,14 +31,14 @@ const Index = () => {
 
       {/* Main Content */}
       <div className="mobile-container space-y-6">
-        {/* Spending Insights */}
+        {/* This Week's Overview */}
         <section>
           <h2 className="text-lg font-semibold mb-3 text-foreground">This Week's Overview</h2>
           <div className="grid grid-cols-1 gap-4">
             <SpendingInsightCard
               title="Total Spending"
               amount={2450}
-              change={-12}
+              change={-8}
               period="vs last week"
               type="spending"
             />
@@ -60,9 +61,14 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Daily Tip */}
+        {/* Daily Money Tip */}
         <section>
           <DailyTipCard />
+        </section>
+
+        {/* Spending Insights Chart */}
+        <section>
+          <SpendingChart />
         </section>
 
         {/* Quick Actions */}
@@ -70,7 +76,7 @@ const Index = () => {
           <QuickActions />
         </section>
 
-        {/* Savings Goals Preview */}
+        {/* Savings Goals */}
         <section>
           <SavingsGoalCard />
         </section>
@@ -78,13 +84,13 @@ const Index = () => {
         {/* Peer Benchmark */}
         <section className="bg-card rounded-xl p-4 card-glow border border-accent/20">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-accent to-primary flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
               <span className="text-white text-sm font-bold">👥</span>
             </div>
             <div className="flex-1">
               <h3 className="font-semibold text-foreground">Peer Benchmark</h3>
               <p className="text-sm text-muted-foreground">
-                Students like you spent <span className="font-semibold text-accent">₹2,800</span> this week
+                Students like you spent <span className="font-semibold text-foreground">₹2,800</span> this week
               </p>
             </div>
             <div className="text-xs bg-success-light text-success px-2 py-1 rounded-full font-medium">

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Plus, Send, Zap, Gift } from "lucide-react";
+import { Plus, Send, Zap, FileText } from "lucide-react";
 
 const quickActions = [
   {
@@ -24,11 +24,11 @@ const quickActions = [
     action: () => console.log("Quick save")
   },
   {
-    id: "rewards",
-    label: "Rewards",
-    icon: Gift,
+    id: "expense-report",
+    label: "Expense Report",
+    icon: FileText,
     gradient: "from-accent to-blue-400",
-    action: () => console.log("View rewards")
+    action: () => console.log("Generate expense report")
   }
 ];
 

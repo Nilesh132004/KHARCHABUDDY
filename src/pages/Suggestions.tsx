@@ -169,7 +169,7 @@ const Suggestions = () => {
   };
 
   return (
-    <div className="min-h-screen pb-20" style={{ backgroundColor: '#fff69a' }}>
+    <div className="min-h-screen bg-background pb-20">
       {/* Header */}
       <div className="mobile-container pt-6 pb-6">
         <div className="flex items-center justify-between mb-6">
